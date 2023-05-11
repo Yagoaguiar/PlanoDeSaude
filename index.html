@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,52 +14,38 @@
 
 
     <div class="container">
-        <div class="form-image">
-            <img src="./assets/img/Logo AF Corretora.jpeg" alt="Imagem da logo Af corretora">
-        </div>
         <div class="form">
-            <div class="form-header">
-                <div class="title">
-                    <h1></h1>
-                </div>
-                <div class="input-group">
+            <div class="input-group">
                 <form name="form_main">
-                    <label for="number">Número:</label>
+                    <label class="form_label" for="number">Número:</label>
                     <input class="form_input" type="text" name="number" id="number" placeholder="(61)999630131">
-                    <div class="input-box">
-                    <label for="message">Mensagem:</label>
+                    <label class="form_label" for="message">Mensagem:</label>
                     <input class="form_input" type="text" name="message" id="message" placeholder="Boa tarde fulano,">
-                    </div>
                     <p id="end_url"></p>
-
-                    <button class="button_gerar" type="button" onclick="generateLink()">Gerar</button>
-
+                    <button class="btn" type="button" onclick="generateLink()">Gerar</button>
+                    <button class="btn" type="button" onclick="location.reload()">Aperte aqui para limpar</button>
                 </form>
-
-
-            </div>
             </div>
         </div>
     </div>
-            <script>
-                function generateLink() {
-                    let number = document.form_main.number.value;
-                    let message = document.form_main.message.value;
-                    let pronto = " Meu nome é Agnaldo Messias, estou fazendo este contato com vc a pedido da AMIL. Para te atender melhor , Precisarei tirar algumas dúvidas, seria plano de Saúde o plano Dental ?? Vc prefere falar por aqui mesmo?? Caso queira, posso te ligar? ";
-                    let prontoDois = "A Amil , atualmente vende empresarial , via CNPJ, ou planos de saúde para pessoa física via administradora Qualicorp, neste modelo vendemos para diplomados (profissionais liberais) Ou para estudante universitário. Qual  a sua idade? Qual a sua profissão ou formação superior?? Vc tem CNPJ? (mínimo 2 vidas)(se MEI MINIMO 180 dias de abertura) Atendemos todos os dias até as 22:00 horas"
-                    let url = "https://wa.me/";
-                    let end_url = `${url}${number}?text=${message + pronto + prontoDois}`;
+    <script>
+        function generateLink() {
+            let number = document.form_main.number.value;
+            let message = document.form_main.message.value;
+            let pronto = " Meu nome é Agnaldo Messias, estou fazendo este contato com vc a pedido da AMIL. Para te atender melhor , Precisarei tirar algumas dúvidas, seria plano de Saúde o plano Dental ?? Vc prefere falar por aqui mesmo?? Caso queira, posso te ligar? ";
+            let prontoDois = "A Amil , atualmente vende empresarial , via CNPJ, ou planos de saúde para pessoa física via administradora Qualicorp, neste modelo vendemos para diplomados (profissionais liberais) Ou para estudante universitário. Qual  a sua idade? Qual a sua profissão ou formação superior?? Vc tem CNPJ? (mínimo 2 vidas)(se MEI MINIMO 180 dias de abertura) Atendemos todos os dias até as 22:00 horas"
+            let url = "https://wa.me/";
+            let end_url = `${url}${number}?text=${message + pronto + prontoDois}`;
 
-                    var button = document.createElement("a");
-                    button.innerHTML = "Mandar para o cliente";
-                    button.href = end_url;
-                    button.classList.add("custom-button");
-                    button.target = "_blank";
-                    document.querySelector('.container').appendChild(button);
+            var button = document.createElement("a");
+            button.innerHTML = "Mandar para o cliente";
+            button.href = end_url;
+            button.classList.add("custom-button");
+            button.target = "_blank";
+            document.querySelector('.container').appendChild(button);
+        }
 
-                }
-
-            </script>
+    </script>
 
 </body>
 
