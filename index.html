@@ -11,8 +11,6 @@
 </head>
 
 <body>
-
-
     <div class="container">
         <div class="form">
             <div class="input-group">
@@ -20,7 +18,7 @@
                     <label class="form_label" for="number">Número:</label>
                     <input class="form_input" type="text" name="number" id="number" placeholder="(61)999630131">
                     <label class="form_label" for="message">Mensagem:</label>
-                    <input class="form_input" type="text" name="message" id="message" placeholder="Boa tarde fulano,">
+                    <input class="form_input" type="text" name="message" id="message" placeholder="Mensagem...">
                     <p id="end_url"></p>
                     <button class="btn" type="button" onclick="generateLink('Agnaldo')">Agnaldo</button>
                     <button class="btn" type="button" onclick="generateLink('Aleff')">Aleff</button>
@@ -30,11 +28,24 @@
         </div>
     </div>
     <script>
+        function getGreeting() {
+            const currentHour = new Date().getHours();
+            if (currentHour >= 6 && currentHour < 12) {
+                return 'Bom dia';
+            } else if (currentHour >= 12 && currentHour < 18) {
+                return 'Boa tarde';
+            } else {
+                return 'Boa noite';
+            }
+        }
+
         function generateLink(user) {
             let number = document.form_main.number.value;
-            let message = document.form_main.message.value;
-            let prontoAgn = " Meu nome é Agnaldo, e estou entrando em contato a pedido da AMIL. Para entender melhor, gostaria de saber se você está interessado em um plano de saúde ou odontológico. A AMIL oferece planos de saúde exclusivamente para empresas e estamos disponíveis todos os dias até às 22:00 para ajudar.";
-            let prontoAleff = "Meu nome é Aleff, e estou entrando em contato a pedido da AMIL. Para entender melhor, gostaria de saber se você está interessado em um plano de saúde ou odontológico. A AMIL oferece planos de saúde exclusivamente para empresas e estamos disponíveis todos os dias até às 22:00 para ajudar.";
+            let customMessage = document.form_main.message.value;
+            let greeting = getGreeting();
+            let message = `${greeting} ${customMessage}`;
+            let prontoAgn = ", meu nome é Agnaldo, e estou entrando em contato a pedido da AMIL. Para entender melhor, gostaria de saber se você está interessado em um plano de saúde ou odontológico. A AMIL oferece planos de saúde exclusivamente para empresas e estamos disponíveis todos os dias até às 22:00 para ajudar.";
+            let prontoAleff = ", meu nome é Aleff, e estou entrando em contato a pedido da AMIL";
 
             let url = "https://wa.me/";
             let end_url = `${url}${number}?text=${message}`;
@@ -47,12 +58,10 @@
 
             var existingButton = document.querySelector('.custom-button');
 
-            // Se o botão já existe, atualize suas propriedades
             if (existingButton) {
                 existingButton.href = end_url;
                 existingButton.textContent = "Mandar para o cliente";
             } else {
-                // Se o botão não existe, crie um novo botão
                 var button = document.createElement("a");
                 button.innerHTML = "Mandar para o cliente";
                 button.href = end_url;
@@ -62,7 +71,6 @@
             }
         }
     </script>
-
 </body>
 
 </html>
